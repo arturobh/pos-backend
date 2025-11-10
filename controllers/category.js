@@ -2,8 +2,9 @@ const Category = require('../models/category');
 const mongoose = require('mongoose');
 
 const categoryGetAll = async (req, res) => {
-
+    console.log("GET api/categories/");
     const categories = await Category.find({});
+    console.log(categories);
     res.status(200).json(
         categories
     )
@@ -34,4 +35,5 @@ const categoryPost = async (req, res) => {
 
 module.exports = {
     categoryGetAll, categoryGetOne, categoryPost
+
 }
