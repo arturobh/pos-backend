@@ -3,18 +3,11 @@ const mongoose = require('mongoose');
 
 const productsGetByCategory = async (req, res) => {
     const {categoryName} = req.params;
-
-    Product.find({ type: categoryName}, function (err, docs) {
-    if (err){
-        console.log(err);
-    }
-    else{
-        console.log("First function call : ", docs);
-        res.status(200).json(
-        docs
+    console.log("categoria enviada: ",categoryName);
+    const products = await Product.find({'type': categoryName});
+    res.status(200).json(
+        products
     )
-    }
-});
 };
 
 const productGetOne = async (req, res) => {
@@ -44,4 +37,5 @@ module.exports = {
     productsGetByCategory, productGetOne, productPost
 
 }
+
 
